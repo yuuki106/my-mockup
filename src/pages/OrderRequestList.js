@@ -21,10 +21,22 @@ function OrderRequestList() {
   const handleToggle = () => {
     setExpanded((prev) => !prev);
   };
+  const labelStyle = {
+    fontWeight: "bold",
+    textAlign: "center",
+    fontSize: "14px",
+  };
+
+  const headerStyle = {
+    backgroundColor: "lightblue",
+    textAlign: "center",
+    padding: "6px 12px",
+    fontSize: "14px",
+  };
   const data = [
     {
       id: 1,
-      number: "検討中",
+      number: "SBI-0001-00001",
       orderStatus: "作成中",
       flag: "通常",
       sbeng: "関東エリア建設G",
@@ -36,7 +48,7 @@ function OrderRequestList() {
     },
     {
       id: 2,
-      number: "検討中",
+      number: "SBI-0001-00002",
       orderStatus: "申請中",
       flag: "通常",
       sbeng: "関東エリア建設G",
@@ -48,7 +60,7 @@ function OrderRequestList() {
     },
     {
       id: 3,
-      number: "検討中",
+      number: "SBI-0001-00003",
       orderStatus: "対応中",
       flag: "通常",
       sbeng: "関東エリア建設G",
@@ -60,7 +72,7 @@ function OrderRequestList() {
     },
     {
       id: 4,
-      number: "検討中",
+      number: "SBI-0001-00004",
       orderStatus: "対応中",
       flag: "通常",
       sbeng: "関東エリア建設G",
@@ -72,7 +84,7 @@ function OrderRequestList() {
     },
     {
       id: 5,
-      number: "検討中",
+      number: "SBI-0001-00005",
       orderStatus: "下書完了",
       flag: "急ぎ",
       sbeng: "関東エリア建設G",
@@ -84,7 +96,7 @@ function OrderRequestList() {
     },
     {
       id: 6,
-      number: "検討中",
+      number: "SBI-0001-00006",
       orderStatus: "発注依頼中",
       flag: "通常",
       sbeng: "関東エリア建設G",
@@ -96,7 +108,7 @@ function OrderRequestList() {
     },
     {
       id: 7,
-      number: "検討中",
+      number: "SBI-0001-00007",
       orderStatus: "発注完了",
       flag: "通常",
       sbeng: "関東エリア建設G",
@@ -151,48 +163,39 @@ function OrderRequestList() {
             <AccordionDetails>
               <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                 <Stack>
-                  <Typography sx={{ backgroundColor: "lightblue", textAlign: "center", padding: "6px 12px" }}>依頼ステータス</Typography>
-                  <FormControlLabel
-                    sx={{ height: "24px" }}
-                    control={<Checkbox size="small" />}
-                    label={<span style={{ fontWeight: "bold", textAlign: "center" }}>Check ALL</span>}
-                  />
-                  <FormControlLabel
-                    sx={{ height: "24px" }}
-                    control={<Checkbox size="small" />}
-                    label={<span style={{ fontWeight: "bold", textAlign: "center" }}>作成中</span>}
-                  />
-                  <FormControlLabel
-                    sx={{ height: "24px" }}
-                    control={<Checkbox size="small" />}
-                    label={<span style={{ fontWeight: "bold", textAlign: "center" }}>申請中</span>}
-                  />
-                  <FormControlLabel
-                    sx={{ height: "24px" }}
-                    control={<Checkbox size="small" />}
-                    label={<span style={{ fontWeight: "bold", textAlign: "center" }}>対応中</span>}
-                  />
-                  <FormControlLabel
-                    sx={{ height: "24px" }}
-                    control={<Checkbox size="small" />}
-                    label={<span style={{ fontWeight: "bold", textAlign: "center" }}>下書完了</span>}
-                  />
-                  <FormControlLabel
-                    sx={{ height: "24px" }}
-                    control={<Checkbox size="small" />}
-                    label={<span style={{ fontWeight: "bold", textAlign: "center" }}>発注依頼中</span>}
-                  />
-                  <FormControlLabel
-                    sx={{ height: "24px" }}
-                    control={<Checkbox size="small" />}
-                    label={<span style={{ fontWeight: "bold", textAlign: "center" }}>発注完了</span>}
-                  />
-                  <FormControlLabel
-                    sx={{ height: "24px" }}
-                    control={<Checkbox size="small" />}
-                    label={<span style={{ fontWeight: "bold", textAlign: "center" }}>キャンセル</span>}
-                  />
+                  <Typography sx={headerStyle}>依頼ステータス</Typography>
+                  <FormControlLabel sx={{ height: "24px" }} control={<Checkbox size="small" />} label={<span style={labelStyle}>Check ALL</span>} />
+                  <FormControlLabel sx={{ height: "24px" }} control={<Checkbox size="small" />} label={<span style={labelStyle}>作成中</span>} />
+                  <FormControlLabel sx={{ height: "24px" }} control={<Checkbox size="small" />} label={<span style={labelStyle}>申請中</span>} />
+                  <FormControlLabel sx={{ height: "24px" }} control={<Checkbox size="small" />} label={<span style={labelStyle}>対応中</span>} />
+                  <FormControlLabel sx={{ height: "24px" }} control={<Checkbox size="small" />} label={<span style={labelStyle}>下書完了</span>} />
+                  <FormControlLabel sx={{ height: "24px" }} control={<Checkbox size="small" />} label={<span style={labelStyle}>発注依頼中</span>} />
+                  <FormControlLabel sx={{ height: "24px" }} control={<Checkbox size="small" />} label={<span style={labelStyle}>発注完了</span>} />
+                  <FormControlLabel sx={{ height: "24px" }} control={<Checkbox size="small" />} label={<span style={labelStyle}>キャンセル</span>} />
                 </Stack>
+
+                <Stack>
+                  <Typography sx={headerStyle}>依頼種別</Typography>
+                  <FormControlLabel sx={{ height: "24px" }} control={<Checkbox size="small" />} label={<span style={labelStyle}>Check ALL</span>} />
+                  <FormControlLabel sx={{ height: "24px" }} control={<Checkbox size="small" />} label={<span style={labelStyle}>新規</span>} />
+                  <FormControlLabel sx={{ height: "24px" }} control={<Checkbox size="small" />} label={<span style={labelStyle}>変更</span>} />
+                </Stack>
+
+                <Stack>
+                  <Typography sx={headerStyle}>契約種別</Typography>
+                  <FormControlLabel sx={{ height: "24px" }} control={<Checkbox size="small" />} label={<span style={labelStyle}>Check ALL</span>} />
+                  <FormControlLabel sx={{ height: "24px" }} control={<Checkbox size="small" />} label={<span style={labelStyle}>個別</span>} />
+                  <FormControlLabel sx={{ height: "24px" }} control={<Checkbox size="small" />} label={<span style={labelStyle}>包括</span>} />
+                </Stack>
+
+                <Stack>
+                  <Typography sx={headerStyle}>優先フラグ</Typography>
+                  <FormControlLabel sx={{ height: "24px" }} control={<Checkbox size="small" />} label={<span style={labelStyle}>Check ALL</span>} />
+                  <FormControlLabel sx={{ height: "24px" }} control={<Checkbox size="small" />} label={<span style={labelStyle}>緊急</span>} />
+                  <FormControlLabel sx={{ height: "24px" }} control={<Checkbox size="small" />} label={<span style={labelStyle}>急ぎ</span>} />
+                  <FormControlLabel sx={{ height: "24px" }} control={<Checkbox size="small" />} label={<span style={labelStyle}>通常</span>} />
+                </Stack>
+
                 <Stack spacing={1}>
                   <Stack flexDirection="row" alignItems="center" justifyContent="space-between">
                     <Typography variant="body2" fontWeight="bold">

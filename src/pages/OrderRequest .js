@@ -13,8 +13,28 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import ChatBubbleOutlineSharpIcon from "@mui/icons-material/ChatBubbleOutlineSharp";
 import { TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import Estimate from "../components/common/Estimate";
+import BaseList from "../components/common/BaseList";
+import InputData from "../components/common/InputData";
 
 function OrderRequest() {
+  const sampleRows = [
+    {
+      着工日: "2025-06-01",
+      優先フラグ: "高",
+      オーダーID: "ORD123",
+      発注金額: "¥1,000,000",
+      発注種別: "通常",
+      決済ID: "PAY001",
+      基地局管理番号: "BS001",
+      "基地局名称（漢字）": "東京タワー",
+      親子オーダー: "親",
+      顧客検収月: "2025年7月",
+      アラート: "なし",
+    },
+  ];
+
+  const [rows, setRows] = useState([]);
   const [activeButton, setActiveButton] = useState("left");
 
   const handleClick = (buttonId) => {
@@ -131,6 +151,9 @@ function OrderRequest() {
   };
 
   useEffect(() => {
+    console.log(rows);
+  }, [rows]);
+  useEffect(() => {
     setMulti(false);
     setFormData({
       type: "",
@@ -146,7 +169,6 @@ function OrderRequest() {
 
   return (
     <Box sx={{ px: "1rem", py: "0.5rem" }}>
-      {" "}
       <h1
         style={{
           margin: "0",
@@ -193,7 +215,7 @@ function OrderRequest() {
           </button>
         </Box>
       </Box>
-      <Stack direction="row" gap="12px">
+      <Stack width="100%" direction="row" gap="12px">
         <Box>
           <Accordion expanded={expanded} onChange={handleToggle}>
             <AccordionSummary
@@ -284,12 +306,12 @@ function OrderRequest() {
                       ]}
                     />
                     <Box sx={{ width: "50%" }}>
-                      <Box sx={{ width: "80%" }}>
+                      <Box sx={{ width: "100%" }}>
                         <span style={{ display: "block", marginBottom: "8px", fontWeight: "bold", color: "#5B1A8E", fontSize: "14px" }}>
                           ⚠️優先フラグ
-                        </span>
-                        <span style={{ display: "block", border: "1px solid grey", padding: "2px", color: "#5B1A8E", fontSize: "14px" }}>
-                          緊急：着工【前日】・急ぎ：着工【3営業日前】・通常：その他
+                          <span style={{ display: "block", border: "1px solid grey", padding: "2px", color: "#5B1A8E", fontSize: "12px" }}>
+                            緊急：着工【前日】・急ぎ：着工【3営業日前】・通常：その他
+                          </span>
                         </span>
                       </Box>
                     </Box>
@@ -425,98 +447,16 @@ function OrderRequest() {
             </AccordionDetails>
           </Accordion>
         </Box>
-        <Box sx={{ width: activeButton === "left" ? "64%" : "98%" }}>
+        <Box sx={{ width: activeButton === "left" ? "80%" : "98%" }}>
           {multi ? (
-            <Accordion expanded={baseList} onChange={handleBaseListToggle}>
-              <AccordionSummary
-                aria-controls="panel1a-content"
-                id="panel1a-header"
-                sx={{
-                  borderBottom: "1px solid lightgrey",
-                }}
-              >
-                <div style={{ display: "flex", justifyContent: "space-between", width: "100%", alignItems: "center" }}>
-                  <Typography
-                    style={{
-                      display: "flex", // ← 横並び（アイコン＋テキスト）
-                      alignItems: "center", // ← 上下中央揃え！
-                      gap: "4px", // ← アイコンと文字の間隔
-                      fontWeight: "bold",
-                      fontSize: "24px",
-                      lineHeight: "0",
-                    }}
-                  >
-                    <ChatBubbleOutlineSharpIcon></ChatBubbleOutlineSharpIcon>
-                    局リスト
-                  </Typography>
-                  <span style={{ fontWeight: "bold", fontSize: "18px" }}>{expanded ? "−" : "+"}</span>
-                </div>
-              </AccordionSummary>
-              <AccordionDetails
-                sx={{
-                  p: 0, // ← paddingを完全になくす
-                }}
-              >
-                <Box
-                  sx={{
-                    backgroundImage: 'url("/images/baseList.png")',
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "top center", // 画像の位置を上中央に
-                    backgroundSize: "contain", // 縦横比を保ちつつ画像全体を表示
-                    // width: "100vw",
-                    height: "15vh",
-                  }}
-                ></Box>
-              </AccordionDetails>
-            </Accordion>
+            <BaseList expanded={mor} onToggle={handleMorToggle} onFileLoaded={setRows} />
           ) : (
             <Box backgroundColor="white" fontWeight="bold" padding="6px" fontSize="24px">
               局リスト不要
             </Box>
           )}
 
-          <Accordion expanded={mor} onChange={handleMorToggle} sx={{}}>
-            <AccordionSummary
-              aria-controls="panel1a-content"
-              id="panel1a-header"
-              sx={{
-                borderBottom: "1px solid lightgrey",
-              }}
-            >
-              <div style={{ display: "flex", justifyContent: "space-between", width: "100%", alignItems: "center" }}>
-                <Typography
-                  style={{
-                    display: "flex", // ← 横並び（アイコン＋テキスト）
-                    alignItems: "center", // ← 上下中央揃え！
-                    gap: "4px", // ← アイコンと文字の間隔
-                    fontWeight: "bold",
-                    fontSize: "24px",
-                    lineHeight: "0",
-                  }}
-                >
-                  <ChatBubbleOutlineSharpIcon></ChatBubbleOutlineSharpIcon>
-                  見積書
-                </Typography>
-                <span style={{ fontWeight: "bold", fontSize: "18px" }}>{expanded ? "−" : "+"}</span>
-              </div>
-            </AccordionSummary>
-            <AccordionDetails
-              sx={{
-                p: 0, // ← paddingを完全になくす
-              }}
-            >
-              <Box
-                sx={{
-                  backgroundImage: 'url("/images/mitumori.png")',
-                  backgroundRepeat: "no-repeat",
-                  backgroundPosition: "top center", // 画像の位置を上中央に
-                  backgroundSize: "contain", // 縦横比を保ちつつ画像全体を表示
-                  // width: "100vw",
-                  height: "15vh",
-                }}
-              ></Box>
-            </AccordionDetails>
-          </Accordion>
+          <Estimate expanded={baseList} onToggle={handleBaseListToggle} />
 
           <Accordion expanded={memo} onChange={handleMemoToggle} sx={{}}>
             <AccordionSummary
@@ -562,6 +502,12 @@ function OrderRequest() {
           </Accordion>
         </Box>
       </Stack>
+      {activeButton === "left" && (
+        <Box sx={{ marginTop: "16px" }}>
+          <InputData rows={rows}></InputData>
+        </Box>
+      )}
+
       <Box backgroundColor="white" py={2}>
         <Box display="flex" flexDirection="column" alignItems="center" gap={2}>
           <FormControlLabel

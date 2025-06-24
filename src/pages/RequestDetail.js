@@ -124,7 +124,7 @@ const RequestDetail = () => {
 
   const headerStyle = {
     ...cellStyle,
-    backgroundColor: "#9FD0FA",
+    backgroundColor: "#CCFFFF",
   };
 
   if (!row) {
@@ -167,7 +167,7 @@ const RequestDetail = () => {
               </Button>
             </Box>
             <Box>
-              <Button sx={{ backgroundColor: "blue", padding: "4px 8px" }} onClick={() => setOrderStatus("発注依頼")}>
+              <Button sx={{ backgroundColor: "#3299FF", padding: "4px 8px" }} onClick={() => setOrderStatus("発注依頼")}>
                 <span style={{ color: "white", fontWeight: "bold" }}>発注依頼</span>
               </Button>
             </Box>
@@ -223,6 +223,8 @@ const RequestDetail = () => {
                       color: "white",
                       width: "100px",
                       borderRadius: "6px",
+                      padding: "4px 24px",
+
                       backgroundColor:
                         orderStatus === "作成中"
                           ? "#add8e6" // 水色
@@ -321,14 +323,14 @@ const RequestDetail = () => {
               </Box>
               <Box sx={{ display: "flex", gap: "6px", justifyContent: "flex-end", margin: "16px 0" }}>
                 <Box sx={{ display: "flex", alignItems: "center", marginRight: "16px" }}>
-                  <Button sx={{ backgroundColor: "blue", padding: "4px 8px", color: "white", fontWeight: "bold" }}>
+                  <Button sx={{ backgroundColor: "#65B2FF", padding: "4px 8px", color: "white", fontWeight: "bold" }}>
                     {" "}
                     <CreateSharpIcon></CreateSharpIcon>
                     修正
                   </Button>
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "center" }}>
-                  <Button sx={{ backgroundColor: "red", padding: "4px 8px", color: "white", fontWeight: "bold" }}>
+                  <Button sx={{ backgroundColor: "#FF3F00", padding: "4px 8px", color: "white", fontWeight: "bold" }}>
                     {" "}
                     <ClearSharpIcon></ClearSharpIcon>
                     レコード削除
@@ -353,16 +355,23 @@ const RequestDetail = () => {
                     <h1 style={{ margin: "16px 0", padding: 0, fontSize: "24px", width: "100%" }}>差戻登録</h1>
                   </Box>
                 </Box>
-                <Box sx={{ display: "flex", margin: "8px 0" }}>
+                <Box sx={{ display: "flex", margin: "8px 0", padding: "0" }}>
                   <Typography sx={{ flex: 3, ...headerStyle }}>差戻理由</Typography>
-                  <Typography sx={{ flex: 7, ...cellStyle }}></Typography>
+                  <Typography sx={{ flex: 7, ...cellStyle, padding: "0" }}>
+                    <TextField
+                      variant="outlined" // 他に "filled", "standard" もあり
+                      size="small" // small / medium
+                      fullWidth // 親コンテナの幅に合わせる
+                      disabled
+                    />
+                  </Typography>
                 </Box>
                 <Box sx={{ display: "flex", gap: "6px", justifyContent: "flex-end", marginRight: "16px" }}>
                   <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <Button sx={{ backgroundColor: "red", padding: "4px 60px", color: "white", fontWeight: "bold" }}> 差戻</Button>
+                    <Button sx={{ backgroundColor: "#FF3F00", padding: "4px 60px", color: "white", fontWeight: "bold" }}> 差戻</Button>
                   </Box>
                   <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <Button sx={{ backgroundColor: "blue", padding: "4px 60px", color: "white", fontWeight: "bold" }}> 修正完了</Button>
+                    <Button sx={{ backgroundColor: "#65B2FF", padding: "4px 60px", color: "white", fontWeight: "bold" }}> 修正完了</Button>
                   </Box>
                 </Box>
               </Box>
@@ -623,7 +632,7 @@ const RequestDetail = () => {
                 <h1 style={{ margin: "16px 0", padding: 0, fontSize: "24px", width: "100%" }}>局リスト一覧</h1>
                 <Box sx={{ display: "flex", gap: "6px", justifyContent: "flex-end", marginRight: "16px" }}>
                   <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <Button sx={{ backgroundColor: "blue", color: "white", fontWeight: "bold", width: "100px" }}>
+                    <Button sx={{ backgroundColor: "#65B2FF", color: "white", fontWeight: "bold", width: "100px" }}>
                       {" "}
                       <CreateSharpIcon></CreateSharpIcon>
                       修正
