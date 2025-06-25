@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/mock/static/css/main.68917a0b.css",
-    "main.js": "/mock/static/js/main.2e6deb86.js",
+    "main.js": "/mock/static/js/main.30738db8.js",
     "static/js/453.ad092136.chunk.js": "/mock/static/js/453.ad092136.chunk.js",
     "index.html": "/mock/index.html",
     "main.68917a0b.css.map": "/mock/static/css/main.68917a0b.css.map",
-    "main.2e6deb86.js.map": "/mock/static/js/main.2e6deb86.js.map",
+    "main.30738db8.js.map": "/mock/static/js/main.30738db8.js.map",
     "453.ad092136.chunk.js.map": "/mock/static/js/453.ad092136.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.68917a0b.css",
-    "static/js/main.2e6deb86.js"
+    "static/js/main.30738db8.js"
   ]
 }
